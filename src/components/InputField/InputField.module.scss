@@ -1,0 +1,26 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    input {
+        border: 0.5px solid #B8BFC2;
+        border-radius: 3px; 
+        padding: 8px;
+        outline: 0;
+    }
+
+    label {
+        position: absolute;
+        margin: 0 8px;
+        transform: translate( 0, 8px) scale(1);
+        transform-origin: top left;
+        transition: all 0.2s ease-out; 
+        background-color: #fff;
+    }
+
+    &:focus-within label, .Active {
+        transform: translate(0, -6px) scale(0.75);
+        font-weight: 700;
+    }
+}

@@ -1,0 +1,32 @@
+.container {
+    background-color: #FFF;
+    max-width: 725px;
+    margin: 16px auto;
+    box-shadow: 0px 0px 3px rgba(39, 39, 39, 0.25);
+    border-radius: 3px;
+    padding: 24px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.info {
+    margin: 24px 0;
+    
+    &__start {
+        display: grid;
+        grid-template-columns: calc(85% - 16px) 15%;
+        column-gap: 16px;
+        margin-bottom: 16px;
+    }
+
+    &__end {
+        display: grid;
+        grid-template-columns: calc(70% - 16px) 30%;
+        column-gap: 16px;
+        margin-top: 16px;
+    }
+}
