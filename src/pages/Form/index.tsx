@@ -19,19 +19,21 @@ export default function Form() {
                 <h1>Formulário de acompanhamento</h1>
                 <input type='datetime-local' />
             </div>
-            <form className={style.info}>
-                <div className={style.info__start}>
-                    <InputField data={stand} setData={setStand} label='Nome do Stand' name='stand' />
-                    <InputField data={number} setData={setNumber} label='Número' name='number' />
-                </div>
-                <div>
-                    <InputField data={name} setData={setName} label='Nome do proprietário' name='name' />
-                </div>
-                <div className={style.info__end}>
-                    <InputField data={monitor} setData={setMonitor} label='Monitor UP' name='monitor' />
-                    <InputField data={agent} setData={setAgent} label='Representante stand' name='agent' />
-                </div>
-            </form>
+            <section>
+                <form className={style.info}>
+                    <div className={style.info__start}>
+                        <InputField data={stand} setData={setStand} label='Nome do Stand' name='stand' />
+                        <InputField data={number} setData={setNumber} label='Número' name='number' />
+                    </div>
+                    <div>
+                        <InputField data={name} setData={setName} label='Nome do proprietário' name='name' />
+                    </div>
+                    <div className={style.info__end}>
+                        <InputField data={monitor} setData={setMonitor} label='Monitor UP' name='monitor' />
+                        <InputField data={agent} setData={setAgent} label='Representante stand' name='agent' />
+                    </div>
+                </form>
+            </section>
             <section className={style.infra__container}>
                 <h3>1. Da Infraestrutura Física</h3>
                 <form>
