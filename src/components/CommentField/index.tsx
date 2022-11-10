@@ -1,10 +1,14 @@
 import style from './CommentField.module.scss';
 
-export default function CommentField() {
+interface Props{
+    title?: string;
+}
+
+export default function CommentField({title}: Props) {
 
     return(
         <>
-            <p className={style.text}>Se negativo, explique.</p>        
+            <p className={style.text}>{title}</p>        
             <textarea className={style.area}>
 
             </textarea>

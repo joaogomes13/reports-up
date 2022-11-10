@@ -44,11 +44,73 @@ export default function Form() {
                         <SearchField title='Mesas e cadeirasm limpas?' name="preparo" data={cadeiras} setData={setCadeiras} />
                         <SearchField title='Balcão forrado?' name="preparo" data={cadeiras} setData={setCadeiras} />
                     </div>
-                    <CommentField />
+                    <CommentField title='Se negativo, explique'/>
                 </form>
             </section>
             <section className={style.infra__container}>
-                <h3>1. Da Infraestrutura Física</h3>
+                <h3>2. Dos alimentos</h3>
+                <form>
+                    <div className={style.infra}>
+                        <SearchField title='Armazenamento adequado?' name="cadeiras" data={cadeiras} setData={setCadeiras} />
+                        <SearchField title='Prazos de validade, ok?' name="preparo" data={cadeiras} setData={setCadeiras} />
+                        <SearchField title='Condições de preparo?' name="preparo" data={cadeiras} setData={setCadeiras} />
+                        <SearchField title='Balcão de preparo adequado?' name="preparo" data={cadeiras} setData={setCadeiras} />
+                        {/* <SearchField title='Balcão forrado?' name="preparo" data={cadeiras} setData={setCadeiras} /> */}
+                    </div>
+                    <CommentField title='Se negativo, explique'/>
+                </form>
+            </section>
+
+            <section className={style.infra__container}>
+                <h3>3. Do preparo</h3>
+                <form>
+                    <div className={style.infra}>
+                        <SearchField title='Utilização de toucas?' name="cadeiras" data={cadeiras} setData={setCadeiras} />
+                        <SearchField title='Álcool em gel para as mãos?' name="preparo" data={cadeiras} setData={setCadeiras} />
+                        <SearchField title='Utilização de máscaras?' name="preparo" data={cadeiras} setData={setCadeiras} />         
+                    </div>
+                    <CommentField title='Se negativo, explique'/>
+                </form>
+            </section>
+
+            <section className={style.infra__container}>
+                <h3>4. Do atendimento ao público</h3>
+                <form>
+                    <div className={style.infra}>
+                        <SearchField title='Traje adequado' name="cadeiras" data={cadeiras} setData={setCadeiras} />
+                        <SearchField title='Duráveis?' name="preparo" data={cadeiras} setData={setCadeiras} />
+                        <SearchField title='Descartáveis?' name="preparo" data={cadeiras} setData={setCadeiras} />
+                    </div>
+                    <CommentField title='Se negativo, explique'/>
+                </form>
+            </section>
+
+            <section className={style.infra__container}>
+                <h3>5. Dos resíduos sólidos</h3>
+                <form>
+                    <div className={style.infra}>
+                        <SearchField title='Orgânico e seco separados?' name="cadeiras" data={cadeiras} setData={setCadeiras} />
+                        <SearchField title='Óleo separado em vasilhame?' name="preparo" data={cadeiras} setData={setCadeiras} />
+                        <SearchField title='Lixeiras tampadas?' name="preparo" data={cadeiras} setData={setCadeiras} />
+                    </div>
+                    <CommentField title='Se negativo, explique'/>
+                </form>
+            </section>
+            
+            <section className={style.infra__container}>
+                <h3>6. Do ambiente</h3>
+                <form>
+                    <div className={style.infra}>
+                        <SearchField title='Ambiente interno limpo?' name="cadeiras" data={cadeiras} setData={setCadeiras} />
+                        <SearchField title='Ambiente externo limpo?' name="preparo" data={cadeiras} setData={setCadeiras} />
+                        <SearchField title='Cozinha limpa?' name="preparo" data={cadeiras} setData={setCadeiras} />
+                    </div>
+                    <CommentField title='Se negativo, explique'/>
+                </form>
+            </section>
+
+            <section className={style.infra__container}>
+                <h3>7. Da Infraestrutura Física</h3>
                 <form>
                     <div className={style.infra}>
                         <SearchField title='Mesas e cadeiras internas?' name="cadeiras" data={cadeiras} setData={setCadeiras} />
@@ -57,9 +119,28 @@ export default function Form() {
                         <SearchField title='Mesas e cadeirasm limpas?' name="preparo" data={cadeiras} setData={setCadeiras} />
                         <SearchField title='Balcão forrado?' name="preparo" data={cadeiras} setData={setCadeiras} />
                     </div>
+                    <CommentField title='Outras especifícações'/>
+                </form>
+            </section>
+
+            <section className={style.infra__container}>
+                <h3>7. Da Infraestrutura Física</h3>
+                <form>
+                    <div className={style.infra}>
+                        <SearchField title='Faltou energia?' name="cadeiras" data={cadeiras} setData={setCadeiras} />
+                        <SearchField title='Falta de recolhimento de lixo?' name="preparo" data={cadeiras} setData={setCadeiras} />
+                        <SearchField title='Falta de água?' name="preparo" data={cadeiras} setData={setCadeiras} />
+                    </div>
+                    <CommentField title='Se positivo, explique'/>             
+                </form>
+            </section>
+            <section className={style.infra__container}>
+                <h3>9. Recomendações gerais e/ou reclamações</h3>
+                <form>
                     <CommentField />
                 </form>
             </section>
+
         </div>
     );
 }
