@@ -1,0 +1,19 @@
+.container {
+
+    &__title {
+        margin-bottom: 8px;
+        color: #272727;
+    }
+
+    &__inputs {
+        display: flex;
+    }
+
+    &__input {
+        margin-right: 16px;
+
+        label {
+            margin-left: 8px;
+        }
+    }
+}
