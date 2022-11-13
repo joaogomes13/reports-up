@@ -1,0 +1,45 @@
+.list {
+
+    &__input {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 16px;
+        label {
+            margin-right: 16px;
+        }
+
+        input {
+            outline: 0;
+            border: none;
+            border-bottom: 0.5px solid #B8BFC2;
+            padding: 8px;
+            font-size: 16px;
+            flex-grow: 0.3;
+        }
+
+        &_add {
+            border-radius: 3px;
+            padding: 6px;
+            border: none;
+            background-color: #1D0626;
+            color: #FFF;
+            margin-right: 8px;
+            transition: ease-in-out 0.5ms;
+        }
+
+        &_remove {
+            border-radius: 3px;
+            padding: 6px;
+            border: none;
+            background-color: #D64D4D;
+            color: #FFF;
+            transition: ease-in-out 0.5ms;
+        }
+
+        &_remove:hover, &_add:hover {
+            opacity: 0.8;
+            cursor: pointer;
+        }
+    }
+}

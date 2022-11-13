@@ -13,21 +13,30 @@
     align-items: center;
 }
 
-.info {
-    margin: 24px 0;
-    
-    &__start {
+.form {
+
+    &__info {
         display: grid;
-        grid-template-columns: calc(85% - 16px) 15%;
-        column-gap: 16px;
-        margin-bottom: 16px;
+        row-gap: 16px;
+
+        &_first {
+            display: grid;
+            grid-template-columns: auto 30%;
+            column-gap: 16px;
+        }
+
+        &_last {
+            display: grid;
+            grid-template-columns: auto 30%;
+            column-gap: 16px;
+        }
     }
 
-    &__end {
-        display: grid;
-        grid-template-columns: calc(70% - 16px) 30%;
+    &__search {
         column-gap: 16px;
-        margin-top: 16px;
+        display: grid;
+        grid-template-columns: auto auto auto;
+        margin-bottom: 16px;
+        row-gap: 24px;
     }
 }
-

@@ -29,7 +29,7 @@ time, mark, audio, video {
 	border: 0;
 	font-size: 100%;
 	font: inherit;
-  font-family: 'Oxygen', sans-serif;
+	font-family: 'Oxygen', sans-serif;
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
@@ -39,7 +39,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
-  background-color: #f2f2f2;
+  	background-color: #f2f2f2;
 }
 ol, ul {
 	list-style: none;

@@ -5,21 +5,44 @@ interface Props {
     title: string;
     name: string;
     data?: boolean;
-    setData?: React.Dispatch<React.SetStateAction<Infra>>;
+    setData: React.Dispatch<React.SetStateAction<boolean>>;
     object?: Infra
     atributo?: any
+    qtd?: boolean
+    ptc?: boolean
 }
 
-export default function SearchField({ title, name, data, setData, object, atributo }: Props) {
-
+export default function SearchField({ title, name, data, setData, qtd, ptc }: Props) {
     return (
         <fieldset className={style.radio}>
             <legend className={style.radio__title}>{title}</legend>
             <div className={style.radio__input}>
-                <input id={name + 'Yes'} type="radio" name={name} value='true' onChange={e => atributo(e.target.value === 'true')} required />
-                <label htmlFor={name + 'Yes'}>Sim</label>
-                <input id={name + 'No'} type="radio" name={name} value='false' onChange={e => atributo(e.target.value === 'true')} required />
-                <label htmlFor={name + 'No'}>Não</label>
+                <label htmlFor={name + 'Yes'}>
+                    <input id={name + 'Yes'} type="radio" name={name} value='true' onChange={e => setData(e.target.value === 'true')} required />
+                    Sim
+                </label>
+                <label htmlFor={name + 'No'}>
+                    <input id={name + 'No'} type="radio" name={name} value='false' onChange={e => setData(e.target.value === 'true')} required />
+                    Não
+                </label>
+            </div>
+            <div className={style.radio__qtd}>
+                {
+                    qtd === true &&
+                    <label htmlFor={name + 'Qtd'}>
+                        Quantidade:
+                        <input type='number' />
+                    </label>
+                }
+            </div>
+            <div className={style.radio__ptc}>
+                {
+                    ptc === true &&
+                    <label htmlFor={name + 'Ptc'}>
+                        Potencia:
+                        <input type='number' />
+                    </label>
+                }
             </div>
         </fieldset>
     );

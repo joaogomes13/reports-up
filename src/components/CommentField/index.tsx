@@ -8,9 +8,11 @@ export default function CommentField({title}: Props) {
 
     return(
         <>
-            <p className={style.text}>{title}</p>        
-            <textarea className={style.area}>
-
+            {
+                title !== undefined &&
+                <p className={style.text}>{title}</p>        
+            } 
+            <textarea className={style.area} placeholder='Sua resposta aqui'>
             </textarea>
         </>
     );

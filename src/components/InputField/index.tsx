@@ -24,15 +24,11 @@ export default function InputField({name, label, data, setData}: Props) {
             setIsActive(false);
         }
     }
-
-    // useEffect(() => {
-    //     handleLabel(data);
-    // }, [data]);
     
     return(
-        <div className={style.container}>
-            <input type='text' name={name} value={data} onChange={e => handleTextChange(e.target.value)}/>
-            <label className={isActive ? style.Active : ''}>{label}</label>
-        </div>
+        <fieldset className={style.container}>
+            <input id={name} type='text' name={name} value={data} onChange={e => handleTextChange(e.target.value)}/>
+            <label htmlFor={name} className={isActive ? style.Active : ''}>{label}</label>
+        </fieldset>
     );
 }
