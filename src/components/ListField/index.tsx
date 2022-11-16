@@ -42,7 +42,7 @@ export default function ListField({ name }: Props) {
 
   return (
     <fieldset>
-      <SearchField name='teste' title='Algum outro equipamento?' data={teste} setData={setTeste} />
+      {/* <SearchField name='teste' title='Algum outro equipamento?' data={teste} setData={setTeste} /> */}
       {
         teste === true &&
         <div>

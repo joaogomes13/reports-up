@@ -14,48 +14,12 @@ export default function Form() {
     const [monitor, setMonitor] = useState('');
     const [agent, setAgent] = useState('');
 
-    const [infra, setInfra] = useState({} as Infra);
-    const [cadeiras, setCadeiras] = useState(false);
+    const [infra, setInfra] = useState([{}] as Infra[]);
 
     const date = new Date().toISOString().slice(0, 16);
 
-    const handleInfraChange = (e: boolean) => {
-        setInfra({
-            ...infra,
-            mesas: e
-        })
-    }
-
-    const handleInfraChange1 = (e: boolean) => {
-        setInfra({
-            ...infra,
-            preparo: e
-        })
-    }
-
-    const handleInfraChange2 = (e: boolean) => {
-        setInfra({
-            ...infra,
-            balcaoLimpo: e
-        })
-    }
-
-    const handleInfraChange3 = (e: boolean) => {
-        setInfra({
-            ...infra,
-            mesasLimpas: e
-        })
-    }
-
-    const handleInfraChange4 = (e: boolean) => {
-        setInfra({
-            ...infra,
-            balcaoForrado: e
-        })
-    }
-
     useEffect(() => {
-        console.log('objeto:', infra);
+        console.log('objeto:', infra[0]);
 
     }, [infra]);
 
@@ -82,25 +46,24 @@ export default function Form() {
                     </FormGroup>
                     <FormGroup title='1. Da infraestrutura física' name='Infraestrutura'>
                         <div className={style.form__search}>
-                            <SearchField title='Mesas e cadeiras internas?' name="cadeiras" data={infra.mesas} object={infra} atributo={handleInfraChange} setData={setCadeiras}/>
-                            <SearchField title='Área de preparo isolada?' name="preparo" data={infra.preparo}  object={infra} atributo={handleInfraChange1} setData={setCadeiras}/>
-                            <SearchField title='Balcão limpo?' name="balcaoLimpo" data={infra.balcaoLimpo} object={infra} atributo={handleInfraChange2} setData={setCadeiras}/>
-                            <SearchField title='Mesas e cadeirasm limpas?' name="cadeiraLimpa" data={infra.mesasLimpas}  object={infra} atributo={handleInfraChange3}setData={setCadeiras} />
-                            <SearchField title='Balcão forrado?' name="balcaoForrado" data={infra.balcaoForrado}  object={infra} atributo={handleInfraChange4} setData={setCadeiras} />
+                            <SearchField title='Mesas e cadeiras internas?' name="mesas" data={infra[0].mesas} object={infra} setData={setInfra} />
+                            <SearchField title='Área de preparo isolada?' name="preparo" data={infra[0].preparo} object={infra} setData={setInfra} />
+                            <SearchField title='Balcão limpo?' name="balcaoLimpo" data={infra[0].balcaoLimpo} object={infra} setData={setInfra} />
+                            <SearchField title='Mesas e cadeirasm limpas?' name="mesasLimpas" data={infra[0].mesasLimpas} object={infra} setData={setInfra} />
+                            <SearchField title='Balcão forrado?' name="balcaoForrado" data={infra[0].balcaoForrado} object={infra} setData={setInfra} />
                         </div>
                         <CommentField title='Se negativo, explique' />
                     </FormGroup>
                     <FormGroup title='2. Dos alimentos' name='Alimentos'>
                         <div className={style.form__search}>
-                            <SearchField title='Armazenamento adequado?' name="cadeiras" data={cadeiras}setData={setCadeiras}  />
-                            <SearchField title='Prazos de validade, ok?' name="preparo" data={cadeiras}  setData={setCadeiras}/>
-                            <SearchField title='Condições de preparo?' name="preparo" data={cadeiras}setData={setCadeiras}  />
-                            <SearchField title='Balcão de preparo adequado?' name="preparo" data={cadeiras} setData={setCadeiras} />
-                            <SearchField title='Balcão forrado?' name="preparo" data={cadeiras}setData={setCadeiras} />
+                            <SearchField title='Armazenamento adequado?' name="armazenamento" data={infra[0].armazenamento} object={infra} setData={setInfra} />
+                            <SearchField title='Prazos de validade, ok?' name="prazos" data={infra[0].prazos} object={infra} setData={setInfra} />
+                            <SearchField title='Condições de preparo?' name="condicaoPreparo" data={infra[0].condicaoPreparo} object={infra} setData={setInfra} />
+                            <SearchField title='Balcão de preparo adequado?' name="balcaoPreparo" data={infra[0].balcaoPreparo} object={infra} setData={setInfra} />
                         </div>
                         <CommentField title='Se negativo, explique' />
                     </FormGroup>
-                    <FormGroup title='3. Do preparo' name='Preparo'>
+                    {/* <FormGroup title='3. Do preparo' name='Preparo'>
                         <div className={style.form__search}>
                             <SearchField title='Utilização de toucas?' name="cadeiras" data={cadeiras} setData={setCadeiras}/>
                             <SearchField title='Álcool em gel para as mãos?' name="preparo" data={cadeiras}  setData={setCadeiras}/>
@@ -134,9 +97,9 @@ export default function Form() {
                     </FormGroup>
                     <FormGroup title='7. Dos equipamentos' name='Equipamentos'>
                         <div className={style.form__search}>
-                            <SearchField title='Fogão à gás?' name="cadeiras" data={cadeiras}   qtd={true} setData={setCadeiras}/>
-                            <SearchField title='Chapa à gás?' name="preparo" data={cadeiras}   qtd={true} setData={setCadeiras}/>
-                            <SearchField title='Forno à gás?' name="preparo" data={cadeiras}   qtd={true}setData={setCadeiras} />
+                            <SearchField title='Fogão à gás?' name="cadeiras" data={cadeiras} qtd={true} setData={setCadeiras}/>
+                            <SearchField title='Chapa à gás?' name="preparo" data={cadeiras} qtd={true} setData={setCadeiras}/>
+                            <SearchField title='Forno à gás?' name="preparo" data={cadeiras} qtd={true} setData={setCadeiras} />
                             <SearchField title='Fritadeira à gás?' name="preparo" data={cadeiras}   qtd={true} setData={setCadeiras}/>
                             <SearchField title='Freezers?' name="preparo" data={cadeiras}   qtd={true} ptc={true} setData={setCadeiras}/>
                             <SearchField title='Geladeiras?' name="preparo" data={cadeiras}   qtd={true} ptc={true}setData={setCadeiras}/>
@@ -154,7 +117,7 @@ export default function Form() {
                     </FormGroup>
                     <FormGroup title='9. Recomendações ou reclamações' name='Recomendacoes'>
                         <CommentField />
-                    </FormGroup>
+                    </FormGroup> */}
                 </form>
             </section>
 
