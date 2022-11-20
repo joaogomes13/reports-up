@@ -1,13 +1,13 @@
 import React from 'react';
-import { Infra } from '../../types';
+import { Infraestrutura, Alimentos } from '../../types';
 import style from './SearchField.module.scss';
 
 interface Props {
     title: string;
     name: string;
     data?: boolean;
-    setData: React.Dispatch<React.SetStateAction<Infra[]>>;
-    object: Infra[]
+    setData: React.Dispatch<React.SetStateAction<any[]>>;
+    object: any[]
     qtd?: boolean
     ptc?: boolean
 }
