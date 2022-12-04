@@ -1,0 +1,100 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Stand {
+  id String @id @default(uuid())
+  name String 
+  ownerName String 
+  monitorUp String 
+  number Int 
+  representative String 
+
+  created_at DateTime? @default(now())
+  updated_at DateTime? @default(now())
+
+  @@map("stands")
+  forms Form[]
+  equipment Equipment[]
+}
+
+model Equipment {
+  id String @id @default(uuid())
+  name String 
+  potency Int? 
+  qtd Int @default(1)
+
+  created_at DateTime? @default(now())
+  updated_at DateTime? @default(now())
+
+  form Form @relation(fields: [ form_id ], references: [id])
+  stand Stand @relation(fields: [ stand_id ], references: [id])
+
+  @@map("equipments")
+  form_id String
+  stand_id String
+}
+
+model Form {
+  id String @id @default(uuid())
+  mesaCadeirasInternas Boolean @default(false)
+  areaPreparoIsolado Boolean @default(false)
+  balcaoLimpo Boolean @default(false)
+  mesaCadeirasLimpas Boolean @default(false)
+  balcaoForrado Boolean @default(false)
+  justificativaInfraestrutura String?
+  
+  armazenamentoAdequado Boolean @default(false)
+  validade Boolean @default(false)
+  condicaoPreparo Boolean @default(false)
+  balcaoAdequado Boolean @default(false)
+  justificativaAlimento String?
+  
+  toucas Boolean @default(false)
+  alcoolGel Boolean @default(false)
+  mascaras Boolean @default(false)
+  justificativaPreparo String?
+  
+  trajeAdequado Boolean @default(false)
+  duraveis Boolean @default(false)
+  descartaveis Boolean @default(false)
+  justificativaAtendimento String? 
+  
+  organicoSecoSeparado Boolean @default(false)
+  oleoSeparado Boolean @default(false)
+  lixeirasTampadas Boolean @default(false)
+  justificativaResiduo String? 
+  
+  ambienteInternoLimpo Boolean @default(false)
+  ambienteExternoLimpo Boolean @default(false)
+  cozinhaLimpa Boolean @default(false)
+  justificativaAmbiente String? 
+  
+  justificativaEquipamento String? 
+  
+  faltouEnergia Boolean @default(false)
+  faltouRecolhimentoLixo Boolean @default(false)
+  faltouAgua Boolean @default(false)
+  justificativaStand String?
+  
+  justificativaRecomendacao String? 
+
+  created_at DateTime? @default(now())
+  updated_at DateTime? @default(now())
+
+  stand Stand @relation(fields: [stand_id], references: [id])
+  
+  
+
+  @@map("forms")
+  equipment Equipment[]
+  stand_id String
+}

@@ -5,7 +5,7 @@ import style from './SearchField.module.scss';
 interface Props {
     title: string;
     name: string;
-    data?: boolean;
+    data: boolean;
     setData: React.Dispatch<React.SetStateAction<any[]>>;
     object: any[]
     qtd?: boolean
@@ -23,12 +23,13 @@ export default function SearchField({ title, name, data, setData, qtd, ptc, obje
         <fieldset className={style.radio}>
             <legend className={style.radio__title}>{title}</legend>
             <div className={style.radio__input}>
+
                 <label htmlFor={name + 'Yes'}>
-                    <input id={name + 'Yes'} type="radio" name={name} value='true' onChange={e => handleDataChange(e)} required checked={data} />
+                    <input id={name + 'Yes'} type="radio" name={name} value='true' onChange={e => handleDataChange(e)} required checked={data === true} />
                     Sim
                 </label>
                 <label htmlFor={name + 'No'}>
-                    <input id={name + 'No'} type="radio" name={name} value='false' onChange={e => handleDataChange(e)} required  checked={!data} />
+                    <input id={name + 'No'} type="radio" name={name} value='false' onChange={e => handleDataChange(e)} required  checked={data === false} />
                     Não
                 </label>
             </div>

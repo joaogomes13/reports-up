@@ -48,7 +48,7 @@ export default function Form() {
             stand: stand[0]
         })
 
-        console.log('Pesquisa', pesquisa);
+        console.log('Pesquisa: ', pesquisa);
     }
 
     return (
