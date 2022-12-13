@@ -1,22 +1,20 @@
+.input__container {
+    display: flex;
+    min-width: 677px;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
 .list {
 
     &__input {
-        display: flex;
-        align-items: center;
         justify-content: space-between;
         margin-bottom: 16px;
-        label {
-            margin-right: 16px;
-        }
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
 
-        input {
-            outline: 0;
-            border: none;
-            border-bottom: 0.5px solid #B8BFC2;
-            padding: 8px;
-            font-size: 16px;
-            flex-grow: 0.3;
-        }
+
 
         &_add {
             border-radius: 3px;
@@ -42,4 +40,14 @@
             cursor: pointer;
         }
     }
+
+
+
+    &__inputs {
+        outline: 0;
+        border: none;
+        border-bottom: 0.5px solid #B8BFC2;
+        font-size: 16px;
+    }
 }
+

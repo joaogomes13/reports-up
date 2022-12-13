@@ -124,18 +124,9 @@ export default function Form() {
                         </div>
                         <CommentField title='Se negativo, explique' />
                     </FormGroup>
-                    {/* <FormGroup title='7. Dos equipamentos' name='Equipamentos'>
-                        <div className={style.form__search}>
-                            <SearchField title='Fogão à gás?' name="cadeiras" data={cadeiras} qtd={true} setData={setCadeiras}/>
-                            <SearchField title='Chapa à gás?' name="preparo" data={cadeiras} qtd={true} setData={setCadeiras}/>
-                            <SearchField title='Forno à gás?' name="preparo" data={cadeiras} qtd={true} setData={setCadeiras} />
-                            <SearchField title='Fritadeira à gás?' name="preparo" data={cadeiras}   qtd={true} setData={setCadeiras}/>
-                            <SearchField title='Freezers?' name="preparo" data={cadeiras}   qtd={true} ptc={true} setData={setCadeiras}/>
-                            <SearchField title='Geladeiras?' name="preparo" data={cadeiras}   qtd={true} ptc={true}setData={setCadeiras}/>
-                        </div>
-                            <ListField name='teste' />
-                        <CommentField title='Se negativo, explique' />
-                    </FormGroup> */}
+                    <FormGroup title='7. Dos equipamentos' name='Equipamentos'>
+                        <ListField name='teste' />
+                    </FormGroup>
                     <FormGroup title='8. Do stand' name='Stand'>
                         <div className={style.form__search}>
                             <SearchField title='Faltou energia?' name="faltouEnergia" data={stand[0].faltouEnergia}  setData={setStand} object={stand} />
