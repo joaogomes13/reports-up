@@ -57,15 +57,21 @@ export default function ListField({ name }: Props) {
         <div>
           {
             formTest.map((element, index) => (
-              <div className={style.list__input} key={index}>
-                <div className={style.input__container}>
-                  <input className={style.list__inputs} id={name + 'No'} type="text" name={name} required placeholder='Equipamento' onChange={(e) => handleEquipamentChange(element.id, e)} />
-                  <input className={style.list__inputs} id={name + 'No'} type="number" name={name} required placeholder='Quantidade' onChange={(e) => handleEquipamentChange(element.id, e)} />
-                  <input className={style.list__inputs} id={name + 'No'} type="number" name={name} required placeholder='Potência' onChange={(e) => handleEquipamentChange(element.id, e)} />
+              <div className={style.list} key={index}>
+                <div className={style.list__inputs}>
+                  <input className={style.list__inputs_larger} id={name + 'No'} type="text" name={name} required placeholder='Equipamento' onChange={(e) => handleEquipamentChange(element.id, e)} />
+                  <input className={style.list__inputs_smaller} id={name + 'No'} type="number" name={name} required placeholder='Quantidade' onChange={(e) => handleEquipamentChange(element.id, e)} />
+                  <input className={style.list__inputs_smaller} id={name + 'No'} type="number" name={name} required placeholder='Potência' onChange={(e) => handleEquipamentChange(element.id, e)} />
                 </div>
-                <div>
-                  <button type='button' className={style.list__input_add} onClick={addEquipament}><BiAddToQueue size={24} /></button>
-                  <button type='button' className={style.list__input_remove} onClick={() => removeEquipament(element.id)}><BiTrash size={24} /></button>
+                <div className={style.list__btns}>
+                  <button type='button' className={style.list__btns_remove} onClick={() => removeEquipament(element.id)}>
+                    <BiTrash size={24} />
+                    <p>Deletar</p>
+                  </button>
+                  <button type='button' className={style.list__btns_add} onClick={addEquipament}>
+                    <BiAddToQueue size={24} />
+                    <p>Adicionar equipamento</p>
+                  </button>
                 </div>
               </div>
             ))
