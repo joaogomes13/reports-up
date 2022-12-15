@@ -1,0 +1,36 @@
+{
+  "form": [
+    {
+      "id": "0e1302af-69a2-4208-8f42-9ccce0901f19",
+      "nomeStand": "João Victor Pereira Gomes",
+      "number": "01",
+      "ownerName": "Hyago",
+      "monitorUp": "João",
+      "representative": "Talison",
+      "mesasCadeirasInternas": true,
+      "areaPreparoIsolado": true,
+      "balcaoLimpo": true,
+      "mesaCadeirasLimpas": true,
+      "balcaoForrado": false,
+      "armazenamentoAdequado": true,
+      "validade": false,
+      "condicaoPreparo": false,
+      "balcaoAdequado": true,
+      "toucas": true,
+      "alcoolGel": true,
+      "mascaras": true,
+      "trajeAdequado": true,
+      "duraveis": true,
+      "descartaveis": true,
+      "organicoSecoSeparado": true,
+      "oleoSeparado": true,
+      "lixeirasTampadas": true,
+      "ambienteInternoLimpo": true,
+      "ambienteExternoLimpo": true,
+      "cozinhaLimpa": true,
+      "faltouEnergia": true,
+      "faltouRecolhimentoLixo": true,
+      "faltouAgua": true
+    }
+  ]
+}

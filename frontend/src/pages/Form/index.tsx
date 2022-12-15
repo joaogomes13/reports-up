@@ -7,6 +7,7 @@ import FormGroup from '../../components/FormGroup';
 import CommentField from '../../components/CommentField';
 import ListField from '../../components/ListField';
 import  api  from '../../services/api';
+import { v4 as uuidv4 } from 'uuid';
 
 interface IPesquisa {
     standInfo: StandInfo,
@@ -45,6 +46,8 @@ export default function Form() {
     const sendPesquisa = async () => {
         console.log(
             {
+                
+
                 nomeStand: standNome,
                 number: number,
                 ownerName: name,
@@ -92,6 +95,7 @@ export default function Form() {
         )
 
         await api.post('/form', {
+            id: uuidv4(),
             nomeStand: standNome,
             number: number,
             ownerName: name,
