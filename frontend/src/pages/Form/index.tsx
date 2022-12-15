@@ -6,7 +6,7 @@ import { StandInfo, Infraestrutura, Alimentos, Preparo, Atendimento, Residuos, A
 import FormGroup from '../../components/FormGroup';
 import CommentField from '../../components/CommentField';
 import ListField from '../../components/ListField';
-import { api } from '../../services/api';
+import  api  from '../../services/api';
 
 interface IPesquisa {
     standInfo: StandInfo,

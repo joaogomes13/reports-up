@@ -1,14 +1,24 @@
 import axios from 'axios';
 
-export function setupApiClient(ctx = undefined){
+const api = axios.create({
+        baseURL: 'http://localhost:3333',
+        timeout: 1000,
+        headers: {'Content-Type': 'application/json'}
+    }
+);
 
-    const api = axios.create({
-        baseURL: 'http://localhost:3333'
-    })
+export default api;
+
+// export function setupApiClient(ctx = undefined){
+
+//     const api = axios.create({
+//         baseURL: 'http://localhost:3333',
+//         headers: {'Content-Type': 'application/json'}
+//     })
     
 
-    return api;
+//     return api;
 
-}
+// }
 
-export const api = setupApiClient();
+// export const api = setupApiClient();
