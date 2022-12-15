@@ -73,8 +73,12 @@ export default function Form() {
             faltouAgua: Boolean(form[0].faltouAgua),
             justificativaStand: form[0].justificativaStand?.toString(),
             
-            justificativaRecomendacao: "n/a"
+            justificativaRecomendacao: form[0].justificativaRecomendacao?.toString(),
           
+          }).then((response) => {
+            alert('Enviado!' + response.data);
+          }).catch((error) => {
+            console.log('Erro ao enviar:', error);
           })
           
         }
@@ -153,7 +157,7 @@ export default function Form() {
                         <CommentField title='Se negativo, explique' name="justificativaAmbiente" data={form[0].justificativaAmbiente} object={form} setData={setForm} />
                     </FormGroup>
                     <FormGroup title='7. Dos equipamentos' name='Equipamentos'>
-                        <ListField name='teste' />
+                        <ListField name='equipamentos' />
                     </FormGroup>
                     <FormGroup title='8. Do stand' name='Stand'>
                         <div className={style.form__search}>
@@ -164,7 +168,7 @@ export default function Form() {
                         <CommentField title='Se negativo, explique' name="justificativaStand" data={form[0].justificativaStand} object={form} setData={setForm} />
                     </FormGroup>
                     <FormGroup title='9. Recomendações ou reclamações' name='Recomendacoes'>
-                        <CommentField name="recomendacoesEOuReclamacoes" data={form[0].recomendacoesEOuReclamacoes} object={form} setData={setForm} />
+                        <CommentField name="recomendacoesEOuReclamacoes" data={form[0].justificativaRecomendacao} object={form} setData={setForm} />
                     </FormGroup>
                 </form>
             </section>

@@ -41,7 +41,7 @@ export type Formulario = {
     faltouRecolhimentoLixo: boolean,
     faltouAgua: boolean,
     justificativaStand?: string,
-    recomendacoesEOuReclamacoes: string
+    justificativaRecomendacao: string
     
 }
 
