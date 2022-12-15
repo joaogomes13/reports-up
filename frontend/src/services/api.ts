@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 export function setupApiClient(ctx = undefined){
 
@@ -10,3 +10,5 @@ export function setupApiClient(ctx = undefined){
     return api;
 
 }
+
+export const api = setupApiClient();

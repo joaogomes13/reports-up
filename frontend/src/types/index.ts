@@ -1,40 +1,54 @@
+export type StandInfo = {
+    nomeStand: string,
+    number: number,
+    proprietario: string,
+    monitor: string,
+    representante: string
+}
+
 export type Infraestrutura = {
     mesasCadeirasInternas: boolean,
-    areaPreparoIsolada: boolean,
+    areaPreparoIsolado: boolean,
     balcaoLimpo: boolean,
-    mesasCadeirasLimpas: boolean,
-    balcaoForrado: boolean
+    mesaCadeirasLimpas: boolean,
+    balcaoForrado: boolean,
+    justificativaInfraestrutura?: string
 }
 
 export type Alimentos = {
     armazenamentoAdequado: boolean,
     validade: boolean,
     condicaoPreparo: boolean,
-    balcaoAdequado: boolean
+    balcaoAdequado: boolean,
+    justificativaAlimento?: string
 }
 
 export type Preparo = {
     toucas: boolean,
     alcoolGel: boolean,
-    mascaras: boolean
+    mascaras: boolean,
+    justificativaPreparo?: string
 }
 
 export type Atendimento = {
     trajeAdequado: boolean,
     duraveis: boolean,
-    descartaveis: boolean
+    descartaveis: boolean,
+    justificativaAtendimento?: string
 }
 
 export type Residuos = {
     organicoSecoSeparado: boolean,
     oleoSeparado: boolean,
-    lixeirasTampadas: boolean
+    lixeirasTampadas: boolean,
+    justificativaResiduo?: boolean
 }
 
 export type Ambiente = {
     ambienteInternoLimpo: boolean,
     ambienteExternoLimpo: boolean,
-    cozinhaLimpa: boolean
+    cozinhaLimpa: boolean,
+    justificativaAmbiente?: string
 }
 
 export type Equipamentos = {
@@ -61,8 +75,9 @@ export type Equipamentos = {
 
 export type Stand = {
     faltouEnergia: boolean,
-    faltaRecolhimentoLixo: boolean,
-    faltaAgua: boolean
+    faltouRecolhimentoLixo: boolean,
+    faltouAgua: boolean,
+    justificativaStand?: string
 }
 
 

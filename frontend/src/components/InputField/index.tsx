@@ -4,8 +4,8 @@ import style from './InputField.module.scss';
 interface Props {
     name: string;
     label: string;
-    data: string;
-    setData: React.Dispatch<React.SetStateAction<string>>
+    data: any;
+    setData: React.Dispatch<React.SetStateAction<any>>
 }
 
 export default function InputField({name, label, data, setData}: Props) {

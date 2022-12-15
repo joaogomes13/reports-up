@@ -5,14 +5,23 @@
     margin-bottom: 8px;
 
     &__inputs {
-        display: flex;
+        display: grid;
+        grid-template-columns: 65% 15% 15%;
         justify-content: space-between;
+        
 
+        label {
+            display: flex;
+            flex-direction: column;
+            font-size: 14px;
+        }
         input {
             font-size: 16px;
-            padding: 8px;
             border: 0.5px solid #B8BFC2;
             border-radius: 5px;
+            margin-top: 8px;
+            padding: 8px;
+            outline: 0;
 
         }
 
@@ -63,34 +72,3 @@
 
     }
 }
-
-// .input__container {
-//     display: flex;
-//     min-width: 677px;
-//     justify-content: space-between;
-//     margin-bottom: 8px;
-// }
-
-// .list {
-
-//     &__input {
-//         justify-content: space-between;
-//         margin-bottom: 16px;
-//         display: flex;
-//         flex-direction: column;
-//         align-items: flex-end;
-
-
-
-
-//     }
-
-
-
-//     &__inputs {
-//         outline: 0;
-//         border: none;
-//         border-bottom: 0.5px solid #B8BFC2;
-//         font-size: 16px;
-//     }
-// }
