@@ -1,24 +1,13 @@
-import axios from 'axios';
+import axios from 'axios'
 
-const api = axios.create({
-        baseURL: 'http://localhost:3000',
-        timeout: 1000,
-        headers: {'Content-Type': 'application/json'}
-    }
-);
+export function setupApiClient(ctx = undefined){
 
-export default api;
-
-// export function setupApiClient(ctx = undefined){
-
-//     const api = axios.create({
-//         baseURL: 'http://localhost:3333',
-//         headers: {'Content-Type': 'application/json'}
-//     })
+    const api = axios.create({
+        baseURL: 'http://localhost:3333',
+        
+    })
     
 
-//     return api;
+    return api;
 
-// }
-
-// export const api = setupApiClient();
+}

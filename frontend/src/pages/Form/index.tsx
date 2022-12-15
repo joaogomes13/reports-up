@@ -6,8 +6,8 @@ import { Formulario } from '../../types';
 import FormGroup from '../../components/FormGroup';
 import CommentField from '../../components/CommentField';
 import ListField from '../../components/ListField';
-import  api  from '../../services/api';
-import { v4 as uuidv4 } from 'uuid';
+import  {setupApiClient}  from '../../services/api';
+
 
 export default function Form() {
     const [standNome, setStandNome] = useState('');
@@ -25,112 +25,59 @@ export default function Form() {
     }, [form])
 
     const sendPesquisa = async () => {
-        console.log(
-            {
-                
-
-                nomeStand: standNome,
-                number: number,
-                ownerName: name,
-                monitorUp: monitor,
-                representative: agent,
-
-                mesasCadeirasInternas: form[0].mesasCadeirasInternas,
-                areaPreparoIsolado: form[0].mesasCadeirasInternas,
-                balcaoLimpo: form[0].balcaoLimpo,
-                mesaCadeirasLimpas: form[0].mesaCadeirasLimpas,
-                balcaoForrado: form[0].balcaoForrado,
-                justificativaInfraestrutura: form[0].justificativaInfraestrutura,
-
-                armazenamentoAdequado: form[0].armazenamentoAdequado,
-                validade: form[0].validade,
-                condicaoPreparo: form[0].condicaoPreparo,
-                balcaoAdequado: form[0].balcaoAdequado,
-                justificativaAlimento: form[0].justificativaAlimento,
-
-                toucas: form[0].toucas,
-                alcoolGel: form[0].alcoolGel,
-                mascaras: form[0].mascaras,
-                justificativaPreparo: form[0].justificativaPreparo,
-
-                trajeAdequado: form[0].trajeAdequado,
-                duraveis: form[0].duraveis,
-                descartaveis: form[0].descartaveis,
-                justificativaAtendimento: form[0].justificativaAtendimento,
-
-                organicoSecoSeparado: form[0].organicoSecoSeparado,
-                oleoSeparado: form[0].oleoSeparado,
-                lixeirasTampadas: form[0].lixeirasTampadas,
-                justificativaResiduo: form[0].justificativaResiduo,
-
-                ambienteInternoLimpo: form[0].ambienteInternoLimpo,
-                ambienteExternoLimpo: form[0].ambienteExternoLimpo,
-                cozinhaLimpa: form[0].cozinhaLimpa,
-                justificativaAmbiente: form[0].justificativaAmbiente,
-
-                faltouEnergia: form[0].faltouEnergia,
-                faltouRecolhimentoLixo: form[0].faltouRecolhimentoLixo,
-                faltouAgua: form[0].faltouAgua,
-                justificativaStand: form[0].justificativaStand,
-            }
-        )
-
-        await api.post('/form', {
-            id: uuidv4(),
-            nomeStand: standNome,
-            number: number,
-            ownerName: name,
-            monitorUp: monitor,
-            representative: agent,
-
-            mesasCadeirasInternas: form[0].mesasCadeirasInternas,
-            areaPreparoIsolado: form[0].mesasCadeirasInternas,
-            balcaoLimpo: form[0].balcaoLimpo,
-            mesaCadeirasLimpas: form[0].mesaCadeirasLimpas,
-            balcaoForrado: form[0].balcaoForrado,
-            justificativaInfraestrutura: form[0].justificativaInfraestrutura,
-
-            armazenamentoAdequado: form[0].armazenamentoAdequado,
-            validade: form[0].validade,
-            condicaoPreparo: form[0].condicaoPreparo,
-            balcaoAdequado: form[0].balcaoAdequado,
-            justificativaAlimento: form[0].justificativaAlimento,
-
-            toucas: form[0].toucas,
-            alcoolGel: form[0].alcoolGel,
-            mascaras: form[0].mascaras,
-            justificativaPreparo: form[0].justificativaPreparo,
-
-            trajeAdequado: form[0].trajeAdequado,
-            duraveis: form[0].duraveis,
-            descartaveis: form[0].descartaveis,
-            justificativaAtendimento: form[0].justificativaAtendimento,
-
-            organicoSecoSeparado: form[0].organicoSecoSeparado,
-            oleoSeparado: form[0].oleoSeparado,
-            lixeirasTampadas: form[0].lixeirasTampadas,
-            justificativaResiduo: form[0].justificativaResiduo,
-
-            ambienteInternoLimpo: form[0].ambienteInternoLimpo,
-            ambienteExternoLimpo: form[0].ambienteExternoLimpo,
-            cozinhaLimpa: form[0].cozinhaLimpa,
-            justificativaAmbiente: form[0].justificativaAmbiente,
-
-            faltouEnergia: form[0].faltouEnergia,
-            faltouRecolhimentoLixo: form[0].faltouRecolhimentoLixo,
-            faltouAgua: form[0].faltouAgua,
-            justificativaStand: form[0].justificativaStand,
-
-            recomendacoesEOuReclamacoes: form[0].recomendacoesEOuReclamacoes
-        })
-            .then(response => {
-                alert('Enviado!' + response)
-            })
-            .catch((error) => {
-                console.log('Erro ao enviar' + error)
-            })
-
-    }
+        const api = setupApiClient();
+        await api.post('/form',{
+            nameStand: standNome.toString(),
+            ownerName: name.toString(),
+            monitorUp: monitor.toString(),
+            number: Number(number),
+            representative: agent.toString(),
+            
+            mesaCadeirasInternas: Boolean(form[0].mesaCadeirasLimpas),
+            areaPreparoIsolado: Boolean(form[0].mesasCadeirasInternas),
+            balcaoLimpo: Boolean(form[0].balcaoLimpo),
+            mesaCadeirasLimpas: Boolean(form[0].mesaCadeirasLimpas),
+            balcaoForrado: Boolean(form[0].balcaoForrado),
+            justificativaInfraestrutura: form[0].justificativaInfraestrutura?.toString(),
+            
+            armazenamentoAdequado: Boolean(form[0].armazenamentoAdequado),
+            validade: Boolean(form[0].validade),
+            condicaoPreparo: Boolean(form[0].condicaoPreparo),
+            balcaoAdequado: Boolean(form[0].balcaoAdequado),
+            justificativaAlimento: form[0].justificativaAlimento?.toString(),
+            
+            toucas: Boolean(form[0].toucas),
+            alcoolGel: Boolean(form[0].alcoolGel),
+            mascaras: Boolean(form[0].mascaras),
+            justificativaPreparo: form[0].justificativaPreparo?.toString(),
+            
+            trajeAdequado: Boolean(form[0].trajeAdequado),
+            duraveis: Boolean(form[0].duraveis),
+            descartaveis: Boolean(form[0].descartaveis),
+            justificativaAtendimento: form[0].justificativaAtendimento?.toString(),
+            
+            organicoSecoSeparado: Boolean(form[0].organicoSecoSeparado),
+            oleoSeparado: Boolean(form[0].oleoSeparado),
+            lixeirasTampadas: Boolean(form[0].lixeirasTampadas), 
+            justificativaResiduo: form[0].justificativaResiduo?.toString(),
+            
+            ambienteInternoLimpo: Boolean(form[0].ambienteInternoLimpo),
+            ambienteExternoLimpo: Boolean(form[0].ambienteExternoLimpo),
+            cozinhaLimpa: Boolean(form[0].cozinhaLimpa),
+            justificativaAmbiente: form[0].justificativaAmbiente?.toString(),
+            
+            justificativaEquipamento: "n/a",
+            
+            faltouEnergia: Boolean(form[0].faltouEnergia),
+            faltouRecolhimentoLixo: Boolean(form[0].faltouRecolhimentoLixo),
+            faltouAgua: Boolean(form[0].faltouAgua),
+            justificativaStand: form[0].justificativaStand?.toString(),
+            
+            justificativaRecomendacao: "n/a"
+          
+          })
+          
+        }
 
     return (
         <div className={style.container}>
