@@ -1,3 +1,50 @@
+export type Formulario = {
+    nomeStand: string,
+    number: number,
+    proprietario: string,
+    monitor: string,
+    representante: string,
+    mesasCadeirasInternas: boolean,
+    areaPreparoIsolado: boolean,
+    balcaoLimpo: boolean,
+    mesaCadeirasLimpas: boolean,
+    balcaoForrado: boolean,
+    justificativaInfraestrutura?: string,
+    armazenamentoAdequado: boolean,
+    validade: boolean,
+    condicaoPreparo: boolean,
+    balcaoAdequado: boolean,
+    justificativaAlimento?: string,
+    toucas: boolean,
+    alcoolGel: boolean,
+    mascaras: boolean,
+    justificativaPreparo?: string,
+    trajeAdequado: boolean,
+    duraveis: boolean,
+    descartaveis: boolean,
+    justificativaAtendimento?: string,
+    organicoSecoSeparado: boolean,
+    oleoSeparado: boolean,
+    lixeirasTampadas: boolean,
+    justificativaResiduo?: string,
+    ambienteInternoLimpo: boolean,
+    ambienteExternoLimpo: boolean,
+    cozinhaLimpa: boolean,
+    justificativaAmbiente?: string,
+    equipamentos?: [{
+        id: string
+        name: string,
+        qtd: number,
+        potency: number
+    }],
+    faltouEnergia: boolean,
+    faltouRecolhimentoLixo: boolean,
+    faltouAgua: boolean,
+    justificativaStand?: string,
+    recomendacoesEOuReclamacoes: string
+    
+}
+
 export type StandInfo = {
     nomeStand: string,
     number: number,
