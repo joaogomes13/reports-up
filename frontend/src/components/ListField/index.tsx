@@ -1,41 +1,43 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import style from './ListField.module.scss';
 import { BiTrash, BiAddToQueue } from 'react-icons/bi';
 import { v4 as uuidv4 } from 'uuid';
+import { Equipamentos } from '../../types';
 
 interface Props {
   name: string,
+  data: Equipamentos[],
+  setData: React.Dispatch<React.SetStateAction<Equipamentos[]>>
 }
 
-export default function ListField({ name }: Props) {
-  const [formTest, setFormTest] = useState([{ id: '', equipament: '', qtd: 0, ptc: 0 }])
+export default function ListField({ name, data, setData }: Props) {
 
   const removeEquipament = (id: string) => {
-    let _formTest = [...formTest];
+    let _formTest = [...data];
     _formTest = _formTest.filter(formTest => formTest.id !== id)
     if (_formTest.length >= 1) {
-      setFormTest(_formTest);
+      setData(_formTest);
     }
   }
 
   const addEquipament = () => {
-    let _formTest = [...formTest];
+    let _formTest = [...data];
     _formTest.push({
       equipament: '',
       qtd: 0,
       ptc: 0,
       id: uuidv4()
     })
-    setFormTest(_formTest);
+    setData(_formTest);
   }
 
   const handleEquipamentChange = (id: string, event: React.ChangeEvent<HTMLInputElement>) => {
-    const index = formTest.findIndex(e => e.id === id);
+    const index = data.findIndex(e => e.id === id);
 
-    let _formTest = [...formTest] as any;
+    let _formTest = [...data] as any;
+    
     _formTest[index][event.target.name] = event.target.value
-
-    setFormTest(_formTest);
+    setData(_formTest);
   }
 
   return (
@@ -43,19 +45,19 @@ export default function ListField({ name }: Props) {
       {
         <div>
           {
-            formTest.map((element, index) => (
+            data.map((element, index) => (
               <div className={style.list} key={index}>
                 <div className={style.list__inputs}>
                   <label>
                     Nome do equipamento
-                    <input className={style.list__inputs_larger} id={name + 'No'} type="text" name={name} required onChange={(e) => handleEquipamentChange(element.id, e)} />
+                    <input className={style.list__inputs_larger} id={name + 'Nome'} type="text" name='equipament' required onChange={(e) => handleEquipamentChange(element.id, e)} />
                   </label>
                   <label>
                     Quatidade
-                    <input className={style.list__inputs_smaller} id={name + 'No'} type="number" name={name} required onChange={(e) => handleEquipamentChange(element.id, e)} />
+                    <input className={style.list__inputs_smaller} id={name + 'Qtd'} type="number" name='qtd' required onChange={(e) => handleEquipamentChange(element.id, e)} />
                   </label>
                   <label>Potência
-                    <input className={style.list__inputs_smaller} id={name + 'No'} type="number" name={name} onChange={(e) => handleEquipamentChange(element.id, e)} />
+                    <input className={style.list__inputs_smaller} id={name + 'Ptc'} type="number" name='ptc' onChange={(e) => handleEquipamentChange(element.id, e)} />
                   </label>
                 </div>
                 <div className={style.list__btns}>

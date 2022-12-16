@@ -99,25 +99,10 @@ export type Ambiente = {
 }
 
 export type Equipamentos = {
-    fogao: boolean,
-    chapa: boolean,
-    forno: boolean,
-    fritadeira: boolean,
-    freezer: {
-        possui: boolean,
-        qtd: number,
-        potencia: number
-    },
-    geladeira: {
-        possui: boolean,
-        qtd: number,
-        potencia: number
-    }
-    outrosEquipamentos: [{
-        id: string,
-        equipamento: string,
-        qtd: number
-    }]
+    id: string, 
+    equipament: string, 
+    qtd: number, 
+    ptc: number 
 }
 
 export type Stand = {
