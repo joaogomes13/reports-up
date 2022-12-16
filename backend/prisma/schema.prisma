@@ -35,11 +35,9 @@ model Equipment {
   created_at DateTime? @default(now())
   updated_at DateTime? @default(now())
 
-  form Form @relation(fields: [ form_id ], references: [id])
   stand Stand @relation(fields: [ stand_id ], references: [id])
 
   @@map("equipments")
-  form_id String
   stand_id String
 }
 
@@ -95,6 +93,5 @@ model Form {
   
 
   @@map("forms")
-  equipment Equipment[]
   stand_id String
 }

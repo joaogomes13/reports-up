@@ -11,7 +11,7 @@ class CreateFormController{
             monitorUp, 
             representative, 
         
-            
+            // equipments: [],
 
             // //Formulário
             mesaCadeirasInternas,
@@ -58,6 +58,14 @@ class CreateFormController{
 
         } = req.body;
 
+        const equipments: {
+            equipments: [{
+                nameEqui: string,
+                potency?: number,
+                qtd: number,
+            }]
+        } = req.body
+
         const createFormService = new CreateFormService();
 
         const form = await createFormService.execute({
@@ -69,11 +77,9 @@ class CreateFormController{
              representative, 
          
              //Equipamentos
-            //  nameEqui,
-            //  potency,
-            //  possui,
-            //  qtd,
- 
+            equipments,
+                
+
             //  //Formulário
              mesaCadeirasInternas,
              areaPreparoIsolado,

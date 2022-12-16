@@ -1,5 +1,13 @@
 import prismaClient from '../../prisma'
 
+interface EquipmentType {
+    equipments:[{
+        nameEqui: string,
+        potency?: number,
+        qtd: number,
+    }]
+}
+
 interface FormRequest{
      //Stand 
      nameStand: string,
@@ -9,10 +17,9 @@ interface FormRequest{
      representative: string, 
  
      //Equipamentos
-    //  nameEqui: string,
-    //  potency?: number,
-    //  possui: false,
-    //  qtd: number,
+     equipments: EquipmentType,
+        
+    
 
     //  //Formulário
      mesaCadeirasInternas: false,
@@ -72,10 +79,7 @@ class CreateFormService{
          representative, 
      
          //Equipamentos
-        //  nameEqui,
-        //  potency,
-        //  possui,
-        //  qtd,
+        equipments,
 
         //  //Formulário
          mesaCadeirasInternas,
@@ -132,6 +136,10 @@ class CreateFormService{
                 monitorUp: monitorUp,
                 number: number,
                 representative: representative
+            },
+            include:{
+                forms: true,
+                equipment: true
             }
         })
 
@@ -185,9 +193,20 @@ class CreateFormService{
             }
         })
 
+        const equip = await equipments.equipments.forEach(async (equipment) => {
+            await prismaClient.equipment.create({
+                data:{
+                    name: equipment.nameEqui,
+                    potency: equipment.potency,
+                    qtd: equipment.qtd,
+                    stand_id: stand.id
+                }
+            })
+        })
+
         
 
-        return { form }
+        return { stand }
     }
 }
 
