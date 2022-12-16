@@ -1,11 +1,12 @@
 import { Router ,Request, Response } from "express";
-import { CreateEquipmentController } from "./controllers/equipment/CreateEquipmentController";
+
 
 import { CreateFormController } from "./controllers/form/CreateFormController";
+import { ListStandController } from "./controllers/stand/ListStandController";
 
 const router = Router();
 
 router.post('/form', new CreateFormController().handle)
-router.post('/addEquipment', new CreateEquipmentController().handle)
+router.get('/stand', new ListStandController().handle)
 
 export { router };
