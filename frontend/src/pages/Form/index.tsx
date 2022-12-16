@@ -1,12 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, FormEvent } from 'react';
 import InputField from '../../components/InputField';
 import SearchField from '../../components/SearchField';
 import style from './Form.module.scss';
-import { Formulario } from '../../types';
+import { Formulario, Equipamentos } from '../../types';
 import FormGroup from '../../components/FormGroup';
 import CommentField from '../../components/CommentField';
 import ListField from '../../components/ListField';
-import  {setupApiClient}  from '../../services/api';
+import  api  from '../../services/api';
 
 
 export default function Form() {
@@ -17,15 +17,69 @@ export default function Form() {
     const [agent, setAgent] = useState('');
 
     const [form, setForm] = useState([{}] as Formulario[]);
+    const [equipamento, setEquipamento] = useState([{}] as Equipamentos[]);
 
     const date = new Date().toISOString().slice(0, 16);
 
     useEffect(() => {
-        console.log(form[0].justificativaAlimento);
-    }, [form])
+        console.log(equipamento);
+    }, [equipamento])
 
-    const sendPesquisa = async () => {
-        const api = setupApiClient();
+    const sendPesquisa = async (e: FormEvent ) => {
+        e.preventDefault();
+
+        console.log({
+            nameStand: standNome.toString(),
+            ownerName: name.toString(),
+            monitorUp: monitor.toString(),
+            number: Number(number),
+            representative: agent.toString(),
+            
+            mesaCadeirasInternas: Boolean(form[0].mesaCadeirasLimpas),
+            areaPreparoIsolado: Boolean(form[0].mesasCadeirasInternas),
+            balcaoLimpo: Boolean(form[0].balcaoLimpo),
+            mesaCadeirasLimpas: Boolean(form[0].mesaCadeirasLimpas),
+            balcaoForrado: Boolean(form[0].balcaoForrado),
+            justificativaInfraestrutura: form[0].justificativaInfraestrutura?.toString(),
+            
+            armazenamentoAdequado: Boolean(form[0].armazenamentoAdequado),
+            validade: Boolean(form[0].validade),
+            condicaoPreparo: Boolean(form[0].condicaoPreparo),
+            balcaoAdequado: Boolean(form[0].balcaoAdequado),
+            justificativaAlimento: form[0].justificativaAlimento?.toString(),
+            
+            toucas: Boolean(form[0].toucas),
+            alcoolGel: Boolean(form[0].alcoolGel),
+            mascaras: Boolean(form[0].mascaras),
+            justificativaPreparo: form[0].justificativaPreparo?.toString(),
+            
+            trajeAdequado: Boolean(form[0].trajeAdequado),
+            duraveis: Boolean(form[0].duraveis),
+            descartaveis: Boolean(form[0].descartaveis),
+            justificativaAtendimento: form[0].justificativaAtendimento?.toString(),
+            
+            organicoSecoSeparado: Boolean(form[0].organicoSecoSeparado),
+            oleoSeparado: Boolean(form[0].oleoSeparado),
+            lixeirasTampadas: Boolean(form[0].lixeirasTampadas), 
+            justificativaResiduo: form[0].justificativaResiduo?.toString(),
+            
+            ambienteInternoLimpo: Boolean(form[0].ambienteInternoLimpo),
+            ambienteExternoLimpo: Boolean(form[0].ambienteExternoLimpo),
+            cozinhaLimpa: Boolean(form[0].cozinhaLimpa),
+            justificativaAmbiente: form[0].justificativaAmbiente?.toString(),
+            
+            equipamentos: equipamento,
+            justificativaEquipamento: "n/a",
+            
+            faltouEnergia: Boolean(form[0].faltouEnergia),
+            faltouRecolhimentoLixo: Boolean(form[0].faltouRecolhimentoLixo),
+            faltouAgua: Boolean(form[0].faltouAgua),
+            justificativaStand: form[0].justificativaStand?.toString(),
+            
+            justificativaRecomendacao: form[0].justificativaRecomendacao?.toString(),
+          
+        });
+
         await api.post('/form',{
             nameStand: standNome.toString(),
             ownerName: name.toString(),
@@ -66,6 +120,7 @@ export default function Form() {
             cozinhaLimpa: Boolean(form[0].cozinhaLimpa),
             justificativaAmbiente: form[0].justificativaAmbiente?.toString(),
             
+            equipamentos: equipamento,
             justificativaEquipamento: "n/a",
             
             faltouEnergia: Boolean(form[0].faltouEnergia),
@@ -79,19 +134,20 @@ export default function Form() {
             alert('Enviado!' + response.data);
           }).catch((error) => {
             console.log('Erro ao enviar:', error);
-          })
+          });
           
         }
 
     return (
         <div className={style.container}>
-            <button type='button' onClick={sendPesquisa}>Enviar pesquisa</button>
+            
             <div className={style.header}>
                 <h1>Formulário de acompanhamento</h1>
                 <input type='datetime-local' value={date} />
             </div>
             <section>
-                <form className={style.info}>
+                <form className={style.info} onSubmit={sendPesquisa}>
+                    <button type='submit'>Enviar pesquisa</button>
                     <FormGroup title='Informações do Stand' name='Informacoes do Stand'>
                         <div className={style.form__info}>
                             <div className={style.form__info_first}>
@@ -157,7 +213,7 @@ export default function Form() {
                         <CommentField title='Se negativo, explique' name="justificativaAmbiente" data={form[0].justificativaAmbiente} object={form} setData={setForm} />
                     </FormGroup>
                     <FormGroup title='7. Dos equipamentos' name='Equipamentos'>
-                        <ListField name='equipamentos' />
+                        <ListField name='equipamentos' data={equipamento} setData={setEquipamento} />
                     </FormGroup>
                     <FormGroup title='8. Do stand' name='Stand'>
                         <div className={style.form__search}>
