@@ -100,9 +100,9 @@ export type Ambiente = {
 
 export type Equipamentos = {
     id: string, 
-    equipament: string, 
+    nameEquip: string, 
     qtd: number, 
-    ptc: number 
+    potency: number 
 }
 
 export type Stand = {

@@ -23,9 +23,9 @@ export default function ListField({ name, data, setData }: Props) {
   const addEquipament = () => {
     let _formTest = [...data];
     _formTest.push({
-      equipament: '',
+      nameEquip: '',
       qtd: 0,
-      ptc: 0,
+      potency: 0,
       id: uuidv4()
     })
     setData(_formTest);

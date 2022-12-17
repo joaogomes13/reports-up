@@ -7,6 +7,7 @@ import FormGroup from '../../components/FormGroup';
 import CommentField from '../../components/CommentField';
 import ListField from '../../components/ListField';
 import  api  from '../../services/api';
+import { v4 as uuidv4 } from 'uuid';
 
 
 export default function Form() {
@@ -17,18 +18,24 @@ export default function Form() {
     const [agent, setAgent] = useState('');
 
     const [form, setForm] = useState([{}] as Formulario[]);
-    const [equipamento, setEquipamento] = useState([{}] as Equipamentos[]);
+    const [equipment, setEquipment] = useState([{id: uuidv4()}] as Equipamentos[]);
 
-    const date = new Date().toISOString().slice(0, 16);
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = date.getMonth();
+    const day = date.getDate();
+
+    const today = `${day < 10 ? 0 : ''}${day}/${month}/${year}`
 
     useEffect(() => {
-        console.log(equipamento);
-    }, [equipamento])
+        console.log('Com conversão', Boolean(form[0].mesaCadeirasLimpas), '\n', "tipo:", typeof Boolean(form[0].mesaCadeirasLimpas));
+        console.log('Sem conversão', form[0].mesaCadeirasLimpas, '\n', "tipo:", typeof form[0].mesaCadeirasLimpas);
+    }, [form])
 
     const sendPesquisa = async (e: FormEvent ) => {
         e.preventDefault();
 
-        console.log({
+        console.log(typeof {
             nameStand: standNome.toString(),
             ownerName: name.toString(),
             monitorUp: monitor.toString(),
@@ -68,7 +75,7 @@ export default function Form() {
             cozinhaLimpa: Boolean(form[0].cozinhaLimpa),
             justificativaAmbiente: form[0].justificativaAmbiente?.toString(),
             
-            equipamentos: equipamento,
+            equipment: equipment,
             justificativaEquipamento: "n/a",
             
             faltouEnergia: Boolean(form[0].faltouEnergia),
@@ -120,7 +127,7 @@ export default function Form() {
             cozinhaLimpa: Boolean(form[0].cozinhaLimpa),
             justificativaAmbiente: form[0].justificativaAmbiente?.toString(),
             
-            equipamentos: equipamento,
+            equipamentos: equipment,
             justificativaEquipamento: "n/a",
             
             faltouEnergia: Boolean(form[0].faltouEnergia),
@@ -143,11 +150,11 @@ export default function Form() {
             
             <div className={style.header}>
                 <h1>Formulário de acompanhamento</h1>
-                <input type='datetime-local' value={date} />
+                <p>{today}</p>
             </div>
             <section>
                 <form className={style.info} onSubmit={sendPesquisa}>
-                    <button type='submit'>Enviar pesquisa</button>
+                <input type="submit" value="envia" />
                     <FormGroup title='Informações do Stand' name='Informacoes do Stand'>
                         <div className={style.form__info}>
                             <div className={style.form__info_first}>
@@ -213,7 +220,7 @@ export default function Form() {
                         <CommentField title='Se negativo, explique' name="justificativaAmbiente" data={form[0].justificativaAmbiente} object={form} setData={setForm} />
                     </FormGroup>
                     <FormGroup title='7. Dos equipamentos' name='Equipamentos'>
-                        <ListField name='equipamentos' data={equipamento} setData={setEquipamento} />
+                        <ListField name='equipamentos' data={equipment} setData={setEquipment} />
                     </FormGroup>
                     <FormGroup title='8. Do stand' name='Stand'>
                         <div className={style.form__search}>
@@ -231,3 +238,4 @@ export default function Form() {
         </div>
     );
 }
+
