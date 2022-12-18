@@ -43,7 +43,7 @@ export default function Form() {
             representative: agent.toString(),
             
             mesaCadeirasInternas: Boolean(form[0].mesaCadeirasLimpas),
-            areaPreparoIsolado: Boolean(form[0].mesasCadeirasInternas),
+            areaPreparoIsolado: Boolean(form[0].mesaCadeirasInternas),
             balcaoLimpo: Boolean(form[0].balcaoLimpo),
             mesaCadeirasLimpas: Boolean(form[0].mesaCadeirasLimpas),
             balcaoForrado: Boolean(form[0].balcaoForrado),
@@ -95,7 +95,7 @@ export default function Form() {
             representative: agent.toString(),
             
             mesaCadeirasInternas: Boolean(form[0].mesaCadeirasLimpas),
-            areaPreparoIsolado: Boolean(form[0].mesasCadeirasInternas),
+            areaPreparoIsolado: Boolean(form[0].mesaCadeirasInternas),
             balcaoLimpo: Boolean(form[0].balcaoLimpo),
             mesaCadeirasLimpas: Boolean(form[0].mesaCadeirasLimpas),
             balcaoForrado: Boolean(form[0].balcaoForrado),
@@ -170,7 +170,7 @@ export default function Form() {
                     </FormGroup>
                     <FormGroup title='1. Da infraestrutura física' name='Infraestrutura'>
                         <div className={style.form__search}>
-                            <SearchField title='Mesas e cadeiras internas?' name="mesasCadeirasInternas" data={form[0].mesasCadeirasInternas} object={form} setData={setForm} />
+                            <SearchField title='Mesas e cadeiras internas?' name="mesaCadeirasInternas" data={form[0].mesaCadeirasInternas} object={form} setData={setForm} />
                             <SearchField title='Área de preparo isolada?' name="areaPreparoIsolado" data={form[0].areaPreparoIsolado} object={form} setData={setForm} />
                             <SearchField title='Balcão limpo?' name="balcaoLimpo" data={form[0].balcaoLimpo} object={form} setData={setForm} />
                             <SearchField title='Mesas e cadeiras limpas?' name="mesaCadeirasLimpas" data={form[0].mesaCadeirasLimpas} object={form} setData={setForm} />
