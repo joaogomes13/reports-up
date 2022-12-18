@@ -1,0 +1,24 @@
+.itemContainer {
+    color: #272727;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 16px;
+    transition: all 0.2s;
+    border-bottom: solid 1px #d6d6d6;
+
+    &:hover {
+        cursor: pointer;
+        filter: contrast(1.1);
+        background-color: #0A3873;
+        color: #fff;
+    }
+
+    &:active {
+        filter: contrast(0.9);
+      }
+
+    p {
+        font-size: 16px;
+    }
+}

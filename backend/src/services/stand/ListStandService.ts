@@ -6,7 +6,8 @@ class ListStandService {
         const standList = await prismaClient.stand.findMany({
             select: {
                 id: true,
-                name: true
+                name: true,
+                ownerName: true
             }
         })
         return standList

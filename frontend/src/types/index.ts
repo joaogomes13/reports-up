@@ -46,9 +46,10 @@ export type Formulario = {
 }
 
 export type StandInfo = {
-    nomeStand: string,
+    id?: string,
+    name: string,
     number: number,
-    proprietario: string,
+    ownerName: string,
     monitor: string,
     representante: string
 }
