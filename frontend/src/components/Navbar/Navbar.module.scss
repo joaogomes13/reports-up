@@ -12,5 +12,11 @@
     
     li {
         margin-left: 16px;
+        transition: all 0.2s;
+
+        &:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
     }
 }

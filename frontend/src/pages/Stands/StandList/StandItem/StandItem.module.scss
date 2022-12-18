@@ -1,8 +1,5 @@
 .itemContainer {
     color: #272727;
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
     padding: 16px;
     transition: all 0.2s;
     border-bottom: solid 1px #d6d6d6;
@@ -18,16 +15,8 @@
         filter: contrast(0.9);
       }
 
-    p {
+    td {
         font-size: 16px;
-    }
-
-    &:first-child {
-        border-radius: 10px 10px 0 0;
-    }
-
-    &:last-child {
-        border: none;
-        border-radius: 0 0 10px 10px;
+        padding: 16px 8px;
     }
 }

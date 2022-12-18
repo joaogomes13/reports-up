@@ -1,24 +1,29 @@
-import StandItem from './StandItem';
-import style from './StandList.module.scss';
+import style from './FormList.module.scss';
 import api from '../../../services/api';
 import { useEffect, useState } from 'react';
-import { StandInfo } from '../../../types';
+import { Formulario } from '../../../types';
 import InputField from '../../../components/InputField';
+import FormItem from './FormItem';
+import { useParams } from 'react-router-dom';
 
-export default function StandList() {
+export default function FormList() {
+
+    const {id} = useParams();
 
     const [pesquisa, setPesquisa] = useState('');
-    const [stands, setStands] = useState([{}] as StandInfo[]);
+    const [forms, setForms] = useState([{}] as Formulario[]);
 
-    const getStands = async () => {
-    await api.get(`/stand`)
+    const getForms = async () => {
+        await api.get(`/listform?stand_id=${id}`, {
+        })
             .then(response => {
-                setStands(response.data);
+                console.log(response);
+                setForms(response.data);
             })
     }
 
     useEffect(() => {
-        getStands();
+        getForms();
     }, [])
 
 
@@ -28,13 +33,13 @@ export default function StandList() {
             <table className={style.list}>
                 <thead className={style.list__header}>
                     <th>Id</th>
-                    <th>Nome do Stand</th>
-                    <th>Proprietário</th>
+                    <th>Data</th>
+                    <th>Ações</th>
                 </thead>
                 <tbody>
                     {
-                        stands.map((stand, index) => (
-                            <StandItem id={index} idStand={stand.id} name={stand.name} standOwner={stand.ownerName} />
+                        forms.map((forms, index) => (
+                            <FormItem id={index} idForm={forms.id} date={forms.created_at} />
                         ))
                     }
                 </tbody>

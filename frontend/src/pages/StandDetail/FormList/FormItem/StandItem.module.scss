@@ -1,0 +1,50 @@
+.itemContainer {
+    color: #272727;
+    padding: 16px;
+    transition: all 0.2s;
+    border-bottom: solid 1px #d6d6d6;
+   
+
+    &:active {
+        filter: contrast(0.9);
+      }
+
+    td {
+        font-size: 16px;
+        padding: 16px 8px;
+    }
+
+    &__actions {
+        display: flex;
+    }
+
+    &__icons {
+        border: 1px solid #272727;
+        padding: 4px;
+        margin-right: 8px;
+        border-radius: 3px;
+
+        &:hover {
+            cursor: pointer;
+            filter: contrast(1.1);
+            color: #fff;
+        }
+
+        &:hover:nth-child(1) {
+            background-color: #2E993E;
+            border-color: #2E993E;
+        }
+
+        &:hover:nth-child(2) {
+            background-color: #E0BC28;
+            border-color: #E0BC28;
+        }
+
+
+        &:hover:nth-child(3) {
+            background-color: #DB3730;
+            border-color: #DB3730;
+        }
+
+    }
+}
