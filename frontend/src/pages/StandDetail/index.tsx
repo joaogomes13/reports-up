@@ -5,7 +5,7 @@ export default function StandDetail() {
     return (
         <div className={style.container}>
             <div className={style.header}>
-                <h1>Lista de Stands</h1>
+                <h1>Formulários</h1>
             </div>
             <section className={style.container__list}>
                 <FormList />

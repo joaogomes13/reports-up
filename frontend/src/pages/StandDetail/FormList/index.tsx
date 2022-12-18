@@ -34,12 +34,12 @@ export default function FormList() {
                 <thead className={style.list__header}>
                     <th>Id</th>
                     <th>Data</th>
-                    <th>Monitor</th>
+                    <th>Ações</th>
                 </thead>
                 <tbody>
                     {
                         forms.map((forms, index) => (
-                            <FormItem id={index} idForm={forms.id} date={forms.created_at} monitorUP={forms.monitorUp} />
+                            <FormItem id={index} idForm={forms.id} date={forms.created_at} />
                         ))
                     }
                 </tbody>
