@@ -1,4 +1,7 @@
 export type Formulario = {
+    id: string,
+    created_at: string,
+    
     nameStand: string,
     number: number,
     ownerName: string,
